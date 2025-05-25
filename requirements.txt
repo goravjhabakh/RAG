@@ -4,6 +4,7 @@ dotenv
 marker-pdf
 python-magic-bin
 sentence-transformers
+huggingface_hub
 langchain
 langchain-community
 langchain-mongodb
