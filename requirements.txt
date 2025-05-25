@@ -1,0 +1,6 @@
+langchain
+langchain-community
+pymongo
+openai
+dotenv
+marker-pdf
