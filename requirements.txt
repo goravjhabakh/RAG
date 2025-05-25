@@ -1,6 +1,10 @@
-langchain
-langchain-community
 pymongo
 openai
 dotenv
 marker-pdf
+python-magic-bin
+sentence-transformers
+langchain
+langchain-community
+langchain-mongodb
+langchain-huggingface
