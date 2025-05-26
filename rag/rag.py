@@ -32,7 +32,7 @@ class RerankRetriever(BaseRetriever):
     top_k: int = 3
 
     def _get_relevant_documents(self, query: str) -> List[Document]:
-        initial_docs = self.retriever.get_relevant_documents(query)
+        initial_docs = self.retriever.invoke(query)
         pairs = [(query, doc.page_content) for doc in initial_docs]
         scores = self.reranker.predict(pairs)
         reranked = sorted(zip(scores, initial_docs), key=lambda x: x[0], reverse=True)
@@ -42,8 +42,8 @@ vectorstore = MongoDBAtlasVectorSearch(collection, embedding_model, index_name='
 print('Initialized search functionality')
 
 key = os.getenv('GEMINI_KEY')
-retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
-reranked_retriever = RerankRetriever(retriever=retriever, reranker=reranker, top_k=3)
+retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
+reranked_retriever = RerankRetriever(retriever=retriever, reranker=reranker, top_k=5)
 
 llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", google_api_key=key)
 chain = RetrievalQA.from_chain_type(llm = llm, retriever = reranked_retriever, return_source_documents = True)
@@ -52,5 +52,5 @@ query = input('Query: ')
 print('Retrieving data...')
 result = chain.invoke(query)
 
-with open('rag/output.md','w',encoding='utf-8') as md:
+with open('output.md','w',encoding='utf-8') as md:
     md.write(result['result'])

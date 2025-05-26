@@ -34,7 +34,20 @@ def process_tables(tables):
         cleaned_table = clean_table(table)
         md_table = table2markdown(cleaned_table)
     md_tables.append(md_table)
+    return md_tables
 
+def extract_proper_text(page):
+    boxes = [table.bbox for table in page.find_tables() if table.bbox]
+
+    def outside_table(char):
+        for x0, top, x1, bottom in boxes:
+            if x0 <= char['x0'] <= x1 and x0 <= char['x1'] <= x1 and top <= char['top'] <= bottom and top <= char['bottom'] <= bottom:
+                return False
+        return True
+    
+    chars = [char for char in page.chars if outside_table(char)]
+    return pdfplumber.utils.extract_text(chars) if chars else ''
+    
 
 def convert_to_markdown(pdf_path, md_path):
     loop = tqdm(os.listdir(pdf_path),desc='Converting PDFs', unit='file')
@@ -47,7 +60,7 @@ def convert_to_markdown(pdf_path, md_path):
             for page in pdf.pages:
                 tables = page.extract_tables()
                 md_tables = process_tables(tables)
-                
-                    
+                text = extract_proper_text(page)
+                exit()
 
 convert_to_markdown('docs', 'md')
