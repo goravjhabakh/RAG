@@ -11,3 +11,4 @@ langchain-mongodb
 langchain-huggingface
 pdfplumber
 markdownify
+fastapi
