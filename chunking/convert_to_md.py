@@ -1,13 +1,12 @@
-import os 
+import os
 from tqdm import tqdm
-from pprint import pprint
 import pdfplumber
 from markdownify import markdownify
 
 def clean_table(table):
-    tranposed_table = list(zip(*table))
+    transposed_table = list(zip(*table))
     keep = [
-        idx for idx,col in enumerate(tranposed_table)
+        idx for idx, col in enumerate(transposed_table)
         if any(cell and str(cell).strip() for cell in col)
     ]
     cleaned_table = [
@@ -19,7 +18,7 @@ def clean_table(table):
 def table2markdown(table):
     res = []
     for i, row in enumerate(table):
-        cleaned_row = [str(cell).strip() if cell is not None else '' for cell in row]
+        cleaned_row = [str(cell).strip() if cell else '' for cell in row]
         res.append('| ' + ' | '.join(cleaned_row) + ' |')
         if i == 0:
             res.append('| ' + ' | '.join(['---'] * len(cleaned_row)) + ' |')
@@ -28,12 +27,11 @@ def table2markdown(table):
 def process_tables(tables):
     md_tables = []
     for table in tables:
-        if not table or len(table) < 1: continue
-        
-        length = set()
-        cleaned_table = clean_table(table)
-        md_table = table2markdown(cleaned_table)
-    md_tables.append(md_table)
+        if not table or len(table) < 1:
+            continue
+        cleaned = clean_table(table)
+        md = table2markdown(cleaned)
+        md_tables.append(md)
     return md_tables
 
 def extract_proper_text(page):
@@ -41,26 +39,36 @@ def extract_proper_text(page):
 
     def outside_table(char):
         for x0, top, x1, bottom in boxes:
-            if x0 <= char['x0'] <= x1 and x0 <= char['x1'] <= x1 and top <= char['top'] <= bottom and top <= char['bottom'] <= bottom:
+            if x0 <= char['x0'] <= x1 and top <= char['top'] <= bottom:
                 return False
         return True
-    
+
     chars = [char for char in page.chars if outside_table(char)]
     return pdfplumber.utils.extract_text(chars) if chars else ''
-    
 
-def convert_to_markdown(pdf_path, md_path):
-    loop = tqdm(os.listdir(pdf_path),desc='Converting PDFs', unit='file')
-    for file in loop:
-        file_path = os.path.join(pdf_path,file)
-        md_path = os.path.join(md_path, file_path.replace('.pdf','.md'))
-        
-        md_content = []
+def convert_to_markdown(pdf_dir, md_dir):
+    md_output = {}
+
+    for file in tqdm(os.listdir(pdf_dir), desc='Converting PDFs', unit='file'):
+        if not file.endswith(".pdf"):
+            continue
+
+        file_path = os.path.join(pdf_dir, file)
+        file_output = {}
+
         with pdfplumber.open(file_path) as pdf:
-            for page in pdf.pages:
+            for pg_no, page in enumerate(pdf.pages, start=1):
+                text = extract_proper_text(page)
                 tables = page.extract_tables()
                 md_tables = process_tables(tables)
-                text = extract_proper_text(page)
-                exit()
 
-convert_to_markdown('docs', 'md')
+                file_output[f"page_{pg_no}"] = {
+                    "text": text,
+                    "tables": md_tables
+                }
+
+        md_output[file] = file_output
+
+    return md_output
+
+md_content = convert_to_markdown('docs', 'md')

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document Uploader</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f4f4f4;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="file"] {
+      margin-bottom: 1rem;
+    }
+
+    #result {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #eee;
+      border-radius: 5px;
+      min-height: 100px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Upload Document</h2>
+    <input type="file" id="fileInput" />
+    <button onclick="uploadFile()">Upload</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    async function uploadFile() {
+      const fileInput = document.getElementById('fileInput');
+      const resultDiv = document.getElementById('result');
+      
+      if (!fileInput.files.length) {
+        alert('Please select a file');
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", fileInput.files[0]);
+
+      resultDiv.textContent = "Uploading...";
+
+      try {
+        const response = await fetch("http://localhost:8000/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!response.ok) throw new Error("Upload failed");
+
+        const data = await response.json();
+        resultDiv.textContent = JSON.stringify(data.result, null, 2) || "No result returned.";
+      } catch (error) {
+        resultDiv.textContent = "Error: " + error.message;
+      }
+    }
+  </script>
+</body>
+</html>
