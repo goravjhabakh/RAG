@@ -12,3 +12,5 @@ langchain-huggingface
 pdfplumber
 markdownify
 fastapi
+pytest
+unstructured
