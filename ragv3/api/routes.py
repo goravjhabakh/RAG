@@ -12,6 +12,9 @@ os.makedirs(FILES_DIR, exist_ok=True)
 
 router = APIRouter(prefix="/rag", tags=["RAG"])
 
+# Pydantic models will not support Upload File datatypes and the metadata and the document both have different header 
+# So we need to have 2 different endpoint for uploading document for the role thing 
+
 @router.post("/upload", status_code=status.HTTP_200_OK)
 async def upload_files(files: List[UploadFile]):
     results = []
@@ -24,7 +27,7 @@ async def upload_files(files: List[UploadFile]):
             f.write(content)
 
         try:
-            response = process_document(file_path, filename=file.filename)
+            response = process_document(file_path, filename=file.filename) # make it async
             results.append(response)
         except Exception as e:
             results.append({
@@ -37,6 +40,12 @@ async def upload_files(files: List[UploadFile]):
         "message": f"Processed {len(results)} file(s)",
         "results": results
     })
+
+# Another parameter for userid
+# Chat history in some file or storage along with user id
+# After finishing backend create a simple chatbot using react
+
+# useEffect, useState
 
 @router.post("/query", status_code=status.HTTP_200_OK)
 async def process_query(query: str):

@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from api.routes import router
 from logs.main import LOGGER
 
+
 logger = LOGGER.get_logger()
 
 def create_app() -> FastAPI:

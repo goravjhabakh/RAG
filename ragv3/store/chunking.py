@@ -5,7 +5,7 @@ from logs.main import LOGGER
 
 logger = LOGGER.get_logger()
 
-def chunk_text(full_text: str, chunk_size: int = 1000, chunk_overlap: int = 200) -> List[Document]:
+def chunk_text(full_text: str, chunk_size: int = 1200, chunk_overlap: int = 300) -> List[Document]:
     try:
         logger.info(f"Chunking text: size={chunk_size}, overlap={chunk_overlap}")
 

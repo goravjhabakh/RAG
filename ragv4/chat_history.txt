@@ -1,0 +1,4 @@
+user: How to retrieve documents in RAG 
+ai: RAG models retrieve text documents using a retriever component. This retriever returns distributions over text passages given a query. The retrieved documents are then used as additional context for generating a target sequence.
+user: I live in cayman islands, when can i plan outings?? 
+ai: You can plan outings on Cayman Islands public holidays in 2025. These holidays include New Year's Day, National Heroes Day, Ash Wednesday, Good Friday, Easter Monday, Emancipation Day, Discovery Day, Constitution Day, Remembrance Day, Christmas Day, and Boxing Day. General Election Day and King's Birthday dates are to be determined.

@@ -1,0 +1,11 @@
+21-5-25
+crud operations
+fastapi
+serialization, deserialization
+sync async
+background
+what all sync, what all should be async
+techstack
+vimsical for drawing techstack
+
+22-5-25

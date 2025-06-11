@@ -1,0 +1,15 @@
+poetry new <name>
+poetry init
+
+poetry add package
+poetry add package@version
+poetry add package^version - limits to major version
+poetry add package~version - limits to minor version
+poetry remove package
+
+poetry install - install all packages from the toml file
+
+poetry shell - to activate venv
+poetry version minor/major - semantic versioning
+
+poetry config virtualenvs.in-project true

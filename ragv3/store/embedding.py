@@ -31,3 +31,9 @@ class EmbeddingStore:
         except Exception as e:
             logger.error(f"Failed to embed/store documents: {str(e)}")
             raise
+
+
+# Search indices are required for retrival
+# But for now we can only manually create the indices and the free tier limit is 3
+# If we use requests and somewhat automate it then we will have to delete the initial index first and then again create new 
+# indexing for everything which is time consuming
