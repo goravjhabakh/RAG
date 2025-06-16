@@ -1,0 +1,44 @@
+Basics
+show dbs - return list of all current databases
+use <database> - uses that database, creates new if not there but wont reflect until it has some data
+db.createCollection("name")
+db.dropDatabase()
+
+Inserting
+db.collection.insertOne({keys:values}) - creates collection if not there
+db.collection.insertMany([{},{},..,{}])
+db.collection.find() - to get all records or data ig
+
+Datatypes:
+ - string
+ - integer
+ - doubles
+ - Boolean
+ - date : new Date("YYYY-MM-DDTHH:MM:SS") time optional and entire date optional if not provided the current data and time in utc format
+ - null
+ - array : []
+ - nested document : {} similar to dict
+
+Sorting and Limiting
+db.collection.find().sort({field:1 or-1}) 1 for asc, -1 for desc
+db.collection.find().limit(count) - limits to count
+we can chain methods like first do .sort() then .limit() to limit after sorting
+
+Find Method
+.find({query,projection})
+eg db.students.find({name:"Gyan"})
+   db.students.find({name:true}) - returns only name from each record
+can have multiple key value pairs in query
+similar for projection
+
+crud operations
+fastapi
+serialization, deserialization
+sync async
+background
+what all sync, what all should be async
+techstack
+vimsical for drawing techstack
+
+
+

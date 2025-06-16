@@ -1,7 +1,5 @@
-from fastapi import APIRouter, UploadFile, File, status, Form
-from fastapi.concurrency import run_in_threadpool
-from fastapi.responses import JSONResponse
-from api.models import StoreRequest, UploadResponse
+from fastapi import APIRouter, UploadFile, File, status, Form, HTTPException
+from api.models import StoreRequest, UploadResponse, QueryRequest
 from typing import List
 from datetime import datetime
 import os
@@ -35,14 +33,20 @@ async def upload_document(documents: List[UploadFile] = File(...), other_data: s
 
 
     except Exception as e:
-        return JSONResponse(
-            status_code=500,
-            content = {'error': str(e)}
+        logger.error(f'Failed to uploade documents: {str(e)}')
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to upload documents: {e}"
         )
     
 @router.post("/query", status_code=status.HTTP_200_OK)
-async def process_query(query: str, user_id: int):
+async def process_query(payload: QueryRequest):
     try:
+        query = payload.query
+        user_id = payload.user_id
+
+        print(query, user_id, type(user_id))
+
         query_time = datetime.now()
         answer = await handle_query(query)
         answer_time = datetime.now()
@@ -56,13 +60,13 @@ async def process_query(query: str, user_id: int):
             "answer": answer['result']
         }
     except Exception as e:
-        logger.error(f"Query processing failed: {str(e)}")
-        return {
-            'sucess': False,
-            'error': str(e)
-        }
+        logger.error(f"Failed to process query: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to process query: {e}"
+        )
     
-@router.get('/load-chat-history/{user_id}', status_code=status.HTTP_200_OK)
+@router.get('/get-all-chats/{user_id}', status_code=status.HTTP_200_OK)
 async def load_history(user_id: int):
     try:
         history = await load_chat_history(user_id)
@@ -73,7 +77,7 @@ async def load_history(user_id: int):
 
     except Exception as e:
         logger.error(f"Loading chat history failed: {str(e)}")
-        return {
-            'sucess': False,
-            'error': str(e)
-        }
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to load chat history: {e}"
+        )

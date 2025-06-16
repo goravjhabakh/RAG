@@ -1,0 +1,58 @@
+// return (
+//   <div className="app-wrapper min-h-screen w-screen flex items-center justify-center">
+//     <Card className="chat-card w-[50vw] max-w-2xl h-[80vh] bg-black/30 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700 relative overflow-hidden">
+//     <div className="absolute bottom-0 left-0 w-full h-[6px] bg-white blur-md opacity-60 pointer-events-none" />
+
+//       {/* Header */}
+//       <CardHeader>
+//         <CardTitle className="chat-title">ChatBot</CardTitle>
+//       </CardHeader>
+
+//       {/* Messages area */}
+//       <CardContent className="chat-messages-container">
+//         <ScrollArea className="chat-scroll">
+//           {loading ? (
+//             <p className="chat-status">Loading chat history...</p>
+//           ) : messages.length === 0 ? (
+//             <p className="chat-status">No chat history found.</p>
+//           ) : (
+//             <div className="chat-messages">
+//               {messages.map((msg, index) => (
+//                 <div
+//                   key={index}
+//                   className={`chat-bubble ${
+//                     msg.role === 'user' ? 'chat-user' : 'chat-bot'
+//                   }`}
+//                 >
+//                   {msg.text}
+//                 </div>
+//               ))}
+//             </div>
+//           )}
+//         </ScrollArea>
+//       </CardContent>
+
+//       {/* Input area */}
+//       <CardFooter className="chat-input-container">
+//         <form
+//           className="chat-input-form"
+//           onSubmit={(e) => {
+//             e.preventDefault();
+//             handleSend();
+//           }}
+//         >
+//           <Input
+//             placeholder="Type your message..."
+//             value={input}
+//             onChange={(e) => setInput(e.target.value)}
+//             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+//             disabled={sending}
+//           />
+//           <Button type="submit" disabled={sending}>
+//             {sending ? "..." : "Send"}
+//           </Button>
+//         </form>
+//       </CardFooter>
+//     </Card>
+//   </div>
+// );

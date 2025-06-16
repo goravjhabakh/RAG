@@ -10,3 +10,7 @@ class UploadResponse(BaseModel):
     message:str = ''
     uploaded_files: List[str] = []
     total_chunks: int = 0
+
+class QueryRequest(BaseModel):
+    query: str
+    user_id: int
