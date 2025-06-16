@@ -6,3 +6,9 @@ user: Tell me about retrieval in RAG
 ai: Retrieval in RAG is a key feature that can be assessed by freezing the retriever during training. Learned retrieval generally improves results across tasks. In some cases, the retrieval component can collapse, leading to the generator ignoring the documents.
 user: Holiday in India for peer islands 
 ai: State holidays in India must be applied for in BambooHR Time Off for approval. The provided holiday list shows specific holidays for various Indian states. The holiday list includes both national and state holidays.
+user: tell me some poetry commands 
+ai: poetry new creates a new project. poetry init initializes a new project. poetry add adds a package.
+user: give me some guidelines i can use when working remotely 
+ai: Maintain regular hours, respond promptly, and use professional communication. Plan your day, prioritize tasks, and share progress updates. Understand client needs, be transparent, and demonstrate expertise.
+user: Tell me about the retrieval process in RAG 
+ai: RAG learns to retrieve relevant information, and ablations show that this improves results. RAG's dense retriever can be replaced with a fixed BM25 system. The number of retrieved documents can be adjusted at test time.

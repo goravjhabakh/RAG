@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState, useEffect, useRef} from 'react';
 import '../index.css';
 import { useChat } from "../hooks/useChat";
 
@@ -10,6 +10,11 @@ export const ChatArea = ({userId}: ChatAreaProps) => {
     const {messages, loading, setMessages} = useChat(userId);
     const [input, setInput] = useState('')
     const [sending, setSending] = useState(false)
+    const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
+    const scrollToBottom = () => {messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });};
+    useEffect(() => {scrollToBottom();}, [messages]);
+
 
     const handleSend = async() => {
         if (!input.trim()) return;
@@ -56,6 +61,7 @@ export const ChatArea = ({userId}: ChatAreaProps) => {
                         </div>
                     ))
                     )}
+                    <div ref={messagesEndRef} />
                 </div>
                 <div className="chat-input-area">
                     <input 
