@@ -74,3 +74,11 @@ user: next holiday for indian employees
 ai: The next holiday for Indian employees is Vinayagar Chathurthi on Wednesday, August 27, 2025.
 user: What are security compliances for remote work 
 ai: Follow cybersecurity protocols to protect data, avoid using personal devices unless authorized, beware of phishing emails, and lock your screen when away from your workstation.
+user: Hello 
+ai: Could not find relevant information
+user: Hello 
+ai: Could not find relevant information
+user: Hello, what day is today 
+ai: Hello, today is Wednesday, June 18, 2025.
+user: which day of the week is it 
+ai: Wednesday.
