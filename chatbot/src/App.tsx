@@ -1,4 +1,3 @@
-//import { AppTheme, useTheme } from "./context/ThemeContext";
 import {ChatArea} from "./components/ChatArea";
 
 export const App = () => {

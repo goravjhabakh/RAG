@@ -12,3 +12,65 @@ user: give me some guidelines i can use when working remotely
 ai: Maintain regular hours, respond promptly, and use professional communication. Plan your day, prioritize tasks, and share progress updates. Understand client needs, be transparent, and demonstrate expertise.
 user: Tell me about the retrieval process in RAG 
 ai: RAG learns to retrieve relevant information, and ablations show that this improves results. RAG's dense retriever can be replaced with a fixed BM25 system. The number of retrieved documents can be adjusted at test time.
+user: Give some commands on poetry 
+ai: Poetry commands include `poetry new <name>`, `poetry init`, `poetry add package`, `poetry remove package`, `poetry install`, and `poetry shell`. `poetry version` is also used for semantic versioning.
+user: Next holiday for indian employees in peer islands 
+ai: Based on the provided schedule, the next holiday for Indian employees at PeerIslands is Deepavali on October 20, 2025. It is a Monday and a festival.
+user: Next holiday for Indian employees living in Delhi 
+ai: Based on the provided information, the next holiday for Indian employees is Deepavali on October 20, 2025. It is a festival holiday.
+user: asdjsajsdnasd 
+ai: This question cannot be answered from the context.
+user: Hello 
+ai: RAG models can answer questions using free-form text generation. RAG is tested on the MSMARCO NLG task for abstractive question answering. RAG can rely on parametric knowledge to generate reasonable responses.
+user: hello 
+ai: Hello.
+user: Hello 
+ai: Hello.
+user: What is today's date 
+ai: I cannot tell you today's date. The provided documents are PeerIslands holiday schedules and remote work guidelines for 2025.
+user: What is today's date 
+ai: Today is June 18, 2025.
+user: Ok tell me the next holiday for indian employees in peer islands 
+ai: The next holiday for Indian employees in PeerIslands is Independence Day on August 15, 2025.
+user: dsajjdsdjksal 
+ai: {'result': 'Your query contains gibberish.'}
+user: dasfghfsfdg 
+ai: Your query contains gibberish.
+user: 4832904830- 
+ai: Unable to process this query
+user: djai98eqw9ensaksm 
+ai: Your query contains gibberish.
+user: are you an idiot 
+ai: Your query contains offensive content.
+user: Tell me about document store process in RAG 
+ai: Document index vectors are stored on CPU, requiring approximately 100 GB of CPU memory for all of Wikipedia, but can be compressed to 36GB. Maximum Inner Product Search with FAISS is sufficiently fast on CPU.
+user: Tell me some remote guidelines 
+ai: Maintain regular working hours, respond to queries promptly, and use professional communication. Plan your day effectively, prioritize tasks, and share work updates proactively. Be proactive in understanding client needs and maintain transparency on task status.
+user: tell me about fastapi 
+ai: This document does not contain information about FastAPI.
+user: tell me about fastapi 
+ai: Could not find relevant information
+user: ts pmo icl gng 
+ai: Query appears to be gibberish. It consists of seemingly random abbreviations.
+user: Hello, what day is it today 
+ai: Could not find relevant information
+user: Hello, what day is it today 
+ai: Hello, today is Wednesday, June 18, 2025.
+user: tell me aabout fastapi 
+ai: Could not find relevant information
+user: Are there any upcoming holidays where i can go on a trip 
+ai: Yes, in the US, Juneteenth National Independence Day is on Thursday, June 19, 2025. In the Cayman Islands, King's Birthday is on Monday, June 23, 2025 and Constitution Day is on Monday, July 7, 2025.
+user: In india whats the longest possible holiday duration including weekends 
+ai: Could not find relevant information
+user: For indian employees in peer islands whats the longest possible vacation duration (include weekends) 
+ai: Could not find relevant information
+user: Next 3 holidays for indian employees 
+ai: The next three holidays for Indian employees are Independence Day on August 15, Vinayagar Chathurthi on August 27, and Ayutha Pooja on October 1.
+user: Hello 
+ai: Hello.
+user: What is today's date 
+ai: Today's date is 2025-06-18.
+user: next holiday for indian employees 
+ai: The next holiday for Indian employees is Vinayagar Chathurthi on Wednesday, August 27, 2025.
+user: What are security compliances for remote work 
+ai: Follow cybersecurity protocols to protect data, avoid using personal devices unless authorized, beware of phishing emails, and lock your screen when away from your workstation.

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { endpoints } from "@/config";
 
 type ChatMessage = {role: 'user' | 'ai'; text: string}
 type historyItem = {user?: string, ai?: string}
@@ -9,7 +10,7 @@ export const useChat = (userId: string) => {
 
     const loadHistory = async () => {
         try {
-            const res = await fetch(`http://127.0.0.1:8000/rag/get-all-chats/${userId}`)
+            const res = await fetch(`${endpoints.chat}/${userId}`)
             const data = await res.json()
 
             console.log(data.history)
@@ -30,3 +31,5 @@ export const useChat = (userId: string) => {
     useEffect(() => {loadHistory()},[userId])
     return {messages, loading, setMessages};
 }
+
+// separate file for url with useContext

@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import './common.css'
 //import { Gorav } from './hooks/useContext'
 //import { UseMemo } from './hooks/useMemo'
 //import { Pagination } from './hooks/Pagination'

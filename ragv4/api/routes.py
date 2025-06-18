@@ -52,12 +52,12 @@ async def process_query(payload: QueryRequest):
         answer_time = datetime.now()
         logger.info("Query processed successfully")
 
-        await save_chat_history(user_id, query, answer['result'], query_time, answer_time)
+        await save_chat_history(user_id, query, answer, query_time, answer_time)
 
         return {
             "success": True,
             "query": query,
-            "answer": answer['result']
+            "answer": answer
         }
     except Exception as e:
         logger.error(f"Failed to process query: {e}")

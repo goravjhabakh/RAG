@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef} from 'react';
-import '../common.css';
+import '../index.css';
 import { useChat } from "../hooks/useChat";
 import { endpoints } from '@/config';
-import {FaSun, FaMoon} from 'react-icons/fa';
+//import {FaUser, FaRobot} from 'react-icons/fa'
 
 interface ChatAreaProps {
   userId: string;
@@ -13,15 +13,10 @@ export const ChatArea = ({userId}: ChatAreaProps) => {
     const [input, setInput] = useState('')
     const [sending, setSending] = useState(false)
     const messagesEndRef = useRef<HTMLDivElement | null>(null);
-    const [theme, setTheme] = useState<'dark' | 'light'>('dark');
 
     const scrollToBottom = () => {messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });};
     useEffect(() => {scrollToBottom();}, [messages]);
 
-    useEffect(() => {
-        if (theme === 'light') {document.body.classList.add('light-theme')}
-        else {{document.body.classList.remove('light-theme')}}
-    }, [theme])
 
     const handleSend = async() => {
         if (!input.trim()) return;
@@ -53,9 +48,9 @@ export const ChatArea = ({userId}: ChatAreaProps) => {
     }
 
     return (
-        <div className='wrapper'>
+        <div>
             <div className="chat-container">
-                <div className="chat-header">C-3Query</div>
+                <div className="chat-header">ChatBot</div>
                 <div className="chat-messages">
                     {loading ? (
                     <p className="chat-status">Loading chat history...</p>
@@ -83,9 +78,6 @@ export const ChatArea = ({userId}: ChatAreaProps) => {
                         {sending ? '...' : 'Send'}
                     </button>
                 </div>
-            </div>
-            <div className="theme-toggle" onClick={() => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))}>
-                {theme === 'dark' ? <FaSun title="Switch to light mode" /> : <FaMoon title="Switch to dark mode" />}
             </div>
         </div>
     )
