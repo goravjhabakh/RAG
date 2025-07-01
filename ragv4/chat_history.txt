@@ -82,3 +82,35 @@ user: Hello, what day is today
 ai: Hello, today is Wednesday, June 18, 2025.
 user: which day of the week is it 
 ai: Wednesday.
+user: when is the next holiday for indian employees working in peer islands 
+ai: The next holiday for Indian employees working in PeerIslands is Vinayagar Chathurthi on Wednesday, August 27, 2025.
+user: fuck off 
+ai: Your query contains cusswords.
+user: Next holiday in cayman islands 
+ai: The next holiday in the Cayman Islands is King's Birthday on Monday, June 23, 2025.
+user: Next holiday in the US 
+ai: The next holiday in the US is Independence Day on Friday, July 4, 2025.
+user: Hello, what day is it today? 
+ai: Hello, today is Thursday, June 19, 2025.
+user: Overview on RAG 
+ai: RAG models retrieve text documents using an input sequence and use them as additional context when generating a target sequence. RAG can be employed in various scenarios, such as medical or job-related applications. RAG models generate more specific and factually accurate responses.
+user: Jeopardy question generation in RAG 
+ai: RAG models, particularly RAG-Token, perform well on Jeopardy question generation, outperforming BART. RAG models generate more factual and specific questions compared to BART. Learned retrieval improves results for Jeopardy question generation.
+user: which poetry command can i use to activate virtual environment 
+ai: You can use `poetry shell` to activate the venv.
+user: How can I make myself more available and engaging 
+ai: Maintain regular working hours and ensure your availability on communication channels. Engage actively in team discussions and virtual meetings. Use video calls for key discussions to enhance engagement.
+user: Hello, what day is it today 
+ai: Hello, today is Thursday, June 19, 2025.
+user: daskldjaskdjsalkd 
+ai: Your query contains gibberish.
+user: When is mahavir jayanthi holiday in peer islands 
+ai: Could not find relevant information
+user: When is mahavir jayanthi holiday 
+ai: Could not find relevant information
+user: Next 3 holidays for indian employees in peer islands 
+ai: The next three holidays for Indian employees in PeerIslands are Vinayagar Chathurthi on August 27, Ayutha Pooja on October 1, and Gandhi Jayanthi / Vijaya Dasami on October 2, 2025.
+user: How can I make myself more available and engaging 
+ai: Maintain regular working hours and ensure your availability on communication channels. Use video calls for key discussions to enhance engagement. Engage actively in team discussions and virtual meetings.
+user: Jeopardy question generation in RAG 
+ai: RAG models, particularly RAG-Token, perform well in Jeopardy question generation, outperforming BART. RAG models generate more factual and specific questions compared to BART. RAG-Sequence's generations are more diverse than RAG-Token's.

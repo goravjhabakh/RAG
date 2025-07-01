@@ -64,7 +64,7 @@ async def handle_query(query: str):
 
             Context: {context}
             Query: {question}
-            Current Date: {date}'''
+            Current Date: {date} '''
         )
 
         retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
@@ -102,3 +102,5 @@ async def handle_query(query: str):
     except Exception as e:
         logger.error(f"Error during query handling: {str(e)}", exc_info=True)
         raise
+
+# Deploy for few days

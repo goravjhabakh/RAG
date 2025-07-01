@@ -1,0 +1,10 @@
+langchain
+langchain-community
+langchain-mongodb
+langchain-huggingface
+sentence-transformers
+huggingface_hub
+fastapi
+langdetect
+unstructured
+dotenv
